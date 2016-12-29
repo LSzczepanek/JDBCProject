@@ -1,0 +1,30 @@
+--- Ewentualne Dodatki ---
+
+-Do tabeli Pacjent albo adres do pliku tekstowego w którym mog¹ siê znajdowaæ
+zaawansowane info o pacjencie albo bezpoœrednio plik jako BLOB w bazie
+
+-Do tabeli Ordynator login i has³o je¿eli bêdziemy chcieli siê logowaæ
+
+--Bardzo ewentualnie Lista dostêpnych pacjentów, których ordynator
+sobie mo¿e dodaæ do oddzia³u i lista leków w magazynie z którego mo¿na
+zamówiæ do magazynu szpitalnego
+
+--- Jak to dzia³a ---
+Na stronie jest lista Ordynatorów na których mo¿na wejœæ/je¿eli ma byæ
+logowanie to  screen logowania gdzie ordynator siê mo¿e zalogowaæ
+
+Ordynator ma dalej dostêp do przejrzenia pacjentów swojego oddzia³u i ewentualnie
+mo¿liwoœæ otworzenia pliku z dok³adniejszym info w którym nie musi w sumie nic byæ
+
+Jak siê kliknie na pacjenta, albo w jakiejœ ikonce obok to siê wyœwietla
+lista leków które s¹ pacjentowi przypisane oraz po klikniêciu w ikonê
+otwiera siê lista wszystkich mo¿liwych leków. Po klikniêciu na lek wyskakuje
+mo¿liwoœæ przypisania leku pacjentowi i ile dawek tego leku mu przypisaæ.
+Jak nie ma tyle tego leku w magazynie to jakieœ ostrze¿enie wyskakuje, ¿e nie
+mo¿na dodaæ. W sumie przy liœcie pacjentów mo¿na po prostu dodaæ mo¿liwoœæ
+dodania nowego pacjenta do oddzia³u zalogowanego ordynatora, gdzie przy dodaniu
+pacjenta automatycznie zwiêksza siê iloœæ pacjentów. W sumie zarówno przy liœcie
+leków pacjenta i pacjentów edycja dodanie usuwanie zrobiæ, taki standard i powinno byæ ok.
+
+Przynajmniej tak wygl¹da moja wizja jak coœ innego widzisz to dopisz tutaj, czy mi wyœlij na fb pomys³y
+

@@ -1,0 +1,99 @@
+USE AplikacjaLukasz;
+GO
+
+CREATE TABLE Leki
+(
+	Leki_ID int IDENTITY(1,1) PRIMARY KEY,
+	Nazwa varchar(255),
+	Ilosc int
+)
+GO
+
+INSERT INTO Leki (Nazwa, Ilosc)
+VALUES ('Ibuprom', 52)
+
+INSERT INTO Leki (Nazwa, Ilosc)
+VALUES ('Promazyna', 2)
+
+SELECT * FROM Leki
+GO
+
+CREATE TABLE Ordynator
+(
+	Ordynator_ID int IDENTITY(1,1) PRIMARY KEY,
+	Imie varchar(255),
+	Nazwisko varchar(255), 
+)
+GO
+
+INSERT INTO Ordynator (Imie, Nazwisko)
+VALUES ('Marian', 'Marianowski')
+
+INSERT INTO Ordynator (Imie, Nazwisko)
+VALUES ('Izabela', '£Ícka')
+
+SELECT * FROM Ordynator
+GO
+
+CREATE TABLE Oddzial
+(
+	Oddzial_ID int IDENTITY(1,1) PRIMARY KEY,
+	Nazwa varchar(255),
+	Ilosc_pac int DEFAULT 0,
+	Ordynator_ID int FOREIGN KEY REFERENCES Ordynator(Ordynator_ID)
+)
+GO
+
+
+INSERT INTO Oddzial (Nazwa, Ordynator_ID)
+VALUES ('Oddzia≥ chorÛb wewnÍtrznych', 1)
+
+INSERT INTO Oddzial (Nazwa, Ordynator_ID)
+VALUES ('Oddzia≥ kardiologii', 2)
+
+SELECT * FROM Oddzial
+GO
+
+CREATE TABLE Pacjent
+(
+	Pacjent_ID int IDENTITY(1,1) PRIMARY KEY,
+	Imie varchar(255),
+	Nazwisko varchar(255),
+	Miasto varchar(255),
+	Adres varchar(255),
+	Data_ur Date,
+	Oddzial_ID int FOREIGN KEY REFERENCES Oddzial(Oddzial_ID)
+)
+GO
+
+
+INSERT INTO Pacjent (Imie, Nazwisko, Miasto, Adres, Data_ur, Oddzial_ID)
+VALUES ('Marian', 'Paüdzioch', '£Ûdü', 'ul. Ilonowska 22', '1948-07-12', 2)
+
+INSERT INTO Pacjent (Imie, Nazwisko, Miasto, Adres,Data_ur, Oddzial_ID)
+VALUES ('Edyta', 'Edyciarska', '£Ûdü', 'ul. Edytowa 15', '1993-05-05', 1)
+
+SELECT * FROM Pacjent
+GO
+
+CREATE TABLE Pacjent_Leki_Junction
+(
+	Pacjent_ID int FOREIGN KEY REFERENCES Pacjent(Pacjent_ID),
+	Leki_ID int FOREIGN KEY REFERENCES Leki(Leki_ID),
+	Il_dawek int
+)
+GO
+
+INSERT INTO Pacjent_Leki_Junction (Pacjent_ID, Leki_ID, Il_dawek)
+VALUES (1, 1, 2);
+
+INSERT INTO Pacjent_Leki_Junction (Pacjent_ID, Leki_ID, Il_dawek)
+VALUES (2, 2, 4);
+
+SELECT * FROM Pacjent_Leki_Junction
+GO
+
+UPDATE Oddzial
+SET Ilosc_pac=1
+GO
+
