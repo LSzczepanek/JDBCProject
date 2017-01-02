@@ -97,3 +97,17 @@ UPDATE Oddzial
 SET Ilosc_pac=1
 GO
 
+ALTER TABLE Ordynator
+ADD 
+OrLogin varchar(255),
+OrHaslo varchar(255)
+GO
+
+UPDATE Ordynator
+SET
+OrLogin = CONCAT(SUBSTRING(Imie, 1, 3), SUBSTRING(Nazwisko, 1, 3)),
+OrHaslo = CONCAT(SUBSTRING(Imie, 1, 3), SUBSTRING(Nazwisko, 1, 3))
+GO
+
+SELECT * FROM Ordynator
+GO
