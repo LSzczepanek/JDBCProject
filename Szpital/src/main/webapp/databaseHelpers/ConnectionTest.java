@@ -29,8 +29,7 @@ public class ConnectionTest {
 	         // Create and execute an SQL statement that returns some data.  
 	         String SQL = "SELECT * FROM Ordynator";  
 	         stmt = con.createStatement();  
-	         stmt.executeUpdate("UPDATE Ordynator " +
-                   "SET OrLogin = '¹æê³ó¿Ÿñ' WHERE ordynator_id = 2");
+	         stmt.executeUpdate("insert into ordynator values ('Marianna', 'Niedzielska', 'MarNie', 'MarNie')");
 	         rs = stmt.executeQuery(SQL);  
 	         
 	         
