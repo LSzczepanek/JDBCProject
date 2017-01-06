@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import main.webapp.java.DBTablePrinter;
-
 //ServerName: 31.41.178.89:1433
 //login: AplikacjaLukasz
 //haslo: 12345678

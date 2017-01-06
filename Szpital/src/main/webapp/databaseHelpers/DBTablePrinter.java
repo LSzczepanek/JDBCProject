@@ -1,4 +1,4 @@
-package main.webapp.java;
+package main.webapp.databaseHelpers;
 
 /*
 Database Table Printer
