@@ -29,8 +29,6 @@ public class ConnectionTest {
 	         // Create and execute an SQL statement that returns some data.  
 	         String SQL = "SELECT *   FROM Ordynator";  
 	         stmt = con.createStatement();  
-//	         for(int i =0 ; i < 10; i++)
-//	         stmt.executeUpdate("insert into ordynator values ('Marianna', 'Niedzielska', 'MarNie', 'MarNie')");
 	         rs = stmt.executeQuery(SQL);  
 	         
 	         DBTablePrinter.printTable(con, "Ordynator", SQL);

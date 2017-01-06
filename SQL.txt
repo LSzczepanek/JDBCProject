@@ -1,13 +1,3 @@
-1. Validacja loginu i hasla
-2. dodawanie/usuwanie/edycja pacjenta
-3. sprawdzenie pacjenta 
-4. Pacjenci na oddziale
-5. Dodanie obiektow do tabel
-6. wyswietlanie listy lekow pacjenta
-7. dodanie leku do pacjenta (po id)
-8. sprawdzenie ilosci danego leku w bazie
-
-
 3. Sprawdzenie pacjenta
 SELECT P.*, Od.Nazwa, L.Nazwa, PL.Il_dawek 
 FROM 
