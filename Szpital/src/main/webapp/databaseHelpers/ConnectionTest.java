@@ -1,4 +1,4 @@
-package main.webapp;
+package main.webapp.databaseHelpers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
