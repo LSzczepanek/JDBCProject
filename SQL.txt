@@ -31,3 +31,9 @@ VALUES
 SELECT *
 FROM
 Leki L
+
+9 Wypisanie id imienia nazwiska nazwy oddzia³u id oddzia³u
+SELECT o.Ordynator_ID, o.imie, o.nazwisko, odd.Oddzial_ID, odd.nazwa, odd.ilosc_pac
+FROM ordynator o, oddzial odd
+WHERE o.Ordynator_ID = odd.Ordynator_ID
+AND o.Ordynator_ID = ?
