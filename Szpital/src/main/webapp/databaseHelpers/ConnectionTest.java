@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import main.webapp.java.DBTablePrinter;
+
 //ServerName: 31.41.178.89:1433
 //login: AplikacjaLukasz
 //haslo: 12345678
@@ -27,12 +29,13 @@ public class ConnectionTest {
 	         con = DriverManager.getConnection(connectionUrl);  
 	  
 	         // Create and execute an SQL statement that returns some data.  
-	         String SQL = "SELECT * FROM Ordynator";  
+	         String SQL = "SELECT *   FROM Ordynator";  
 	         stmt = con.createStatement();  
-	         stmt.executeUpdate("insert into ordynator values ('Marianna', 'Niedzielska', 'MarNie', 'MarNie')");
+//	         for(int i =0 ; i < 10; i++)
+//	         stmt.executeUpdate("insert into ordynator values ('Marianna', 'Niedzielska', 'MarNie', 'MarNie')");
 	         rs = stmt.executeQuery(SQL);  
 	         
-	         
+	         DBTablePrinter.printTable(con, "Ordynator", SQL);
 	  
 	         // Iterate through the data in the result set and display it.  
 	         while (rs.next()) {  
