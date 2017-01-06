@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>main.webapp.TestConnection</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>Test</servlet-name>
+  	<display-name>Test</display-name>
+  	<description></description>
+  	<servlet-class>main.webapp.servlets.Test</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>TestConnection</servlet-name>
   	<url-pattern>/TestConnection</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Test</servlet-name>
+  	<url-pattern>/Test</url-pattern>
   </servlet-mapping>
 </web-app>
