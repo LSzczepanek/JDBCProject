@@ -29,7 +29,7 @@
             <div class="w3-container w3-teal">
                 <h2>Zaloguj się</h2>
             </div>
-            <form action="LoginServlet" class="w3-container" method=post>
+            <form action="loginvalid" class="w3-container" method=post>
                 <input class="w3-input" type="text" name="login" required>
                 <label class="w3-label w3-validate">Login</label>
                 <input class="w3-input" type="password" name="password" required>

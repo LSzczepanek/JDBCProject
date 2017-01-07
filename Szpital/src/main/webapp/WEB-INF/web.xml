@@ -16,6 +16,12 @@
   	<description></description>
   	<servlet-class>main.webapp.servlets.Test</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>LoginValidateServlet</servlet-name>
+  	<display-name>LoginValidateServlet</display-name>
+  	<description></description>
+  	<servlet-class>servlets.LoginValidateServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>TestConnection</servlet-name>
   	<url-pattern>/TestConnection</url-pattern>
@@ -23,6 +29,10 @@
   <servlet-mapping>
   	<servlet-name>Test</servlet-name>
   	<url-pattern>/Test</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>LoginValidateServlet</servlet-name>
+  	<url-pattern>/loginvalid</url-pattern>
   </servlet-mapping>
 </web-app>
 
