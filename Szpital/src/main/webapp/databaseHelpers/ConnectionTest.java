@@ -28,9 +28,7 @@ public class ConnectionTest {
 			con = DriverManager.getConnection(connectionUrl);
 
 			// Create and execute an SQL statement that returns some data.
-			String SQL = "SELECT Od.Oddzial_ID, Od.Nazwa, P.Pacjent_ID, P.Imie, P.Nazwisko, P.Data_ur "
-					+ "FROM Oddzial Od INNER JOIN Pacjent P on P.Oddzial_ID = Od.Oddzial_ID "
-					+ "WHERE Od.Nazwa LIKE 'Oddzia³ kardiologii'";
+			String SQL = "INSERT Pacjent_Leki_Junction (Pacjent_ID, Leki_ID, Il_dawek) VALUES (1,2,1)";
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(SQL);
 

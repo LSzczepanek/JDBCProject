@@ -153,8 +153,41 @@ public class Database {
 
 	}
 
-	public static boolean insertIntoDatabase() {
-		return false;
+	public static boolean insertIntoDatabase(String SQLCommand) {
+
+		try {
+			// Establish the connection.
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			con = DriverManager.getConnection(connectionUrl);
+
+			// Create and execute an SQL statement that returns some data.
+			String SQL = new String(SQLCommand);
+			stmt = con.createStatement();
+			stmt.executeUpdate(SQL);
+			
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (Exception e) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (Exception e) {
+				}
+		}
+
 	}
 
 	public static boolean deleteFromDatabase() {

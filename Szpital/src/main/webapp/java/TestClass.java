@@ -1,6 +1,7 @@
 package main.webapp.java;
 
 import main.webapp.databaseHelpers.CheckPatient;
+import main.webapp.databaseHelpers.CheckPatientDrugs;
 import main.webapp.databaseHelpers.LoginValidate;
 import main.webapp.databaseHelpers.PatientsInHospitalWard;
 
@@ -15,9 +16,11 @@ public class TestClass {
 			System.out.println("No");
 		}
 		
-		System.out.println(CheckPatient.checkPatientStatus("Paüdzioch"));
+		System.out.println(CheckPatient.checkPatientStatus("Pa≈∫dzioch"));
 		
-		System.out.println(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddzia≥ kardiologii"));
+		System.out.println(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddzia≈∫ kardiologii"));
+		
+		System.out.println(CheckPatientDrugs.checkDrugs("Marian", "Pa≈∫dzioch"));
 	}
 
 }
