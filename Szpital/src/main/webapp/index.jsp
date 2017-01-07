@@ -9,17 +9,12 @@
 <body>
     <!-- Header
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <% 
-    	String oddzial = "";
-    	String doctor = "";
-    	pageContext.setAttribute("oddzial", oddzial);
-    	pageContext.setAttribute("doctor", doctor);
-    %> 
     <%@include file="resources/includes/header.jsp" %>
     <!-- Page
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	
 	<%
+		session.invalidate(); 
 		String error_msg = "";
 		Object error = request.getAttribute("error");
 		if (error != null)

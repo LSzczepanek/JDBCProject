@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.webapp.databaseHelpers.CheckHeadOfHospitalWard;
 import main.webapp.databaseHelpers.LoginValidate;
 
 /**
@@ -43,7 +44,7 @@ public class LoginValidateServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		String url = "/";
+		String url = "/index.jsp";
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		if (login == null || login.length() == 0 || password == null || password.length() == 0) {
@@ -52,6 +53,11 @@ public class LoginValidateServlet extends HttpServlet {
 		} else {
 			boolean check = LoginValidate.validateLogin(login, password);
 			if (check == true) {
+				
+				String result = CheckHeadOfHospitalWard.check(login, password);
+				String wardData[] = result.split(", ");
+				request.setAttribute("wardData", wardData);
+				url = "/loginvalidate.jsp";
 
 			} else {
 				url = "/index.jsp";

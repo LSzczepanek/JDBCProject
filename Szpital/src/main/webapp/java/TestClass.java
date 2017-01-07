@@ -19,7 +19,7 @@ public class TestClass {
 			System.out.println("No");
 		}
 		
-		System.out.println(AddDrug.addDrugToPatient(1, 1, 55));
+		//System.out.println(AddDrug.addDrugToPatient(1, 1, 55));
 		
 		System.out.println(CheckPatient.checkPatientStatus("Paździoch"));
 		
