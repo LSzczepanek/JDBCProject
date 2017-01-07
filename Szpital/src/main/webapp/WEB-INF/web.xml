@@ -20,7 +20,7 @@
   	<servlet-name>LoginValidateServlet</servlet-name>
   	<display-name>LoginValidateServlet</display-name>
   	<description></description>
-  	<servlet-class>servlets.LoginValidateServlet</servlet-class>
+  	<servlet-class>main.webapp.servlets.LoginValidateServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>TestConnection</servlet-name>
