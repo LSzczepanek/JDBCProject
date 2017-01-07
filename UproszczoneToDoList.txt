@@ -1,43 +1,21 @@
-1. Validacja loginu i hasla
+
 2. dodawanie/usuwanie/edycja pacjenta
-3. sprawdzenie pacjenta 
-4. Pacjenci na oddziale
 5. Dodanie obiektow do tabel
-6. wyswietlanie listy lekow pacjenta
-7. dodanie leku do pacjenta (po id)
-8. sprawdzenie ilosci danego leku w bazie
+10 Usuwanie leku od pacjenta
+11 W dodawaniu leku sprawdziæ, czy ju¿ takiego po³¹czenia nie ma jakimœ
+ ifem je¿eli wyskoczy sql to true czy jak tam wolisz
 
 
-3. Sprawdzenie pacjenta
-SELECT P.*, Od.Nazwa, L.Nazwa, PL.Il_dawek 
-FROM 
-Pacjent P
-JOIN Oddzial Od on Od.Oddzial_ID = P.Oddzial_ID
-JOIN Pacjent_Leki_Junction PL on PL.Pacjent_ID = P.Pacjent_ID
-JOIN Leki L on PL.Leki_ID = L.Leki_ID
 
 
-4. Pacjenci na oddziale
-SELECT Od.Oddzial_ID, Od.Nazwa, P.Pacjent_ID, P.Imie, P.Nazwisko, P.Data_ur
-FROM 
-Oddzial Od
-INNER JOIN Pacjent P on P.Oddzial_ID = Od.Oddzial_ID
-WHERE Od.Nazwa LIKE *'Oddzia³ kardiologii'*
+10 Usuwanie leku od pacjenta
+DAWKA = SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = ? AND Leki_ID = ?
+UPDATE Leki SET Ilosc = Ilosc + DAWKA WHERE Leki_ID = ? 
+DELETE FROM Pacjent_Leki_Junction WHERE Pacjent_ID = ? AND Leki_ID = ?
 
-6. Wyœwietlanie listy leków pacjenta
-SELECT P.Pacjent_ID, P.Imie, P.Nazwisko, P.Data_ur, L.Nazwa, PL.Il_dawek
-FROM
-Pacjent P
-JOIN Pacjent_Leki_Junction PL on PL.Pacjent_ID = P.Pacjent_ID
-JOIN Leki L on PL.Leki_ID = L.Leki_ID
-WHERE P.Imie LIKE *'Marian'* AND P.Nazwisko LIKE *'PaŸdzioch'*
+11 W dodawaniu leku sprawdziæ, czy ju¿ takiego po³¹czenia nie ma jakimœ
+ ifem je¿eli wyskoczy sql to true czy jak tam wolisz
+SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = ? AND Leki_ID = ?
+If true:
+UPDATE Pacjent_Leki_Junction SET Il_dawek = Il_dawek + ? WHERE Pacjent_ID = ? AND Leki_ID = ?
 
-7. Dodanie leku
-INSERT Pacjent_Leki_Junction (Pacjent_ID, Leki_ID, Il_dawek)
-VALUES
-(1,2,1)
-
-8. Sprawdzenie ilosci danego leku w bazie
-SELECT *
-FROM
-Leki L

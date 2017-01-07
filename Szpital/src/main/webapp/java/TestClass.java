@@ -1,5 +1,6 @@
 package main.webapp.java;
 
+import main.webapp.databaseHelpers.AddDrug;
 import main.webapp.databaseHelpers.CheckAmountOfDrug;
 import main.webapp.databaseHelpers.CheckHeadOfHospitalWard;
 import main.webapp.databaseHelpers.CheckPatient;
@@ -18,6 +19,8 @@ public class TestClass {
 			System.out.println("No");
 		}
 		
+		System.out.println(AddDrug.addDrugToPatient(1, 1, 55));
+		
 		System.out.println(CheckPatient.checkPatientStatus("Paździoch"));
 		
 		System.out.println(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddziaź kardiologii"));
@@ -28,7 +31,7 @@ public class TestClass {
 		System.out.println(CheckAmountOfDrug.check(1));
 		
 		
-		System.out.println(CheckHeadOfHospitalWard.check(1));
+		System.out.println(CheckHeadOfHospitalWard.check("MarMar", "MarMar"));
 	}
 
 }

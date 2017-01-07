@@ -11,7 +11,9 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <% 
     	String oddzial = "";
-    	pageContext.setAttribute("oddzial", oddzial); 
+    	String doctor = "";
+    	pageContext.setAttribute("oddzial", oddzial);
+    	pageContext.setAttribute("doctor", doctor);
     %> 
     <%@include file="resources/includes/header.jsp" %>
     <!-- Page

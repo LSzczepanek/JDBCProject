@@ -16,43 +16,48 @@ import main.webapp.databaseHelpers.LoginValidate;
  */
 public class LoginValidateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginValidateServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public LoginValidateServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		String url ="/";
+		String url = "/";
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		boolean check = LoginValidate.validateLogin(login, password);
-		if (check == true)
-		{
-			
-		}
-		else
-		{
+		if (login == null || login.length() == 0 || password == null || password.length() == 0) {
 			url = "/index.jsp";
-			request.setAttribute("error", "Błąd! Podane dane są nieprawidłowe!");
+			request.setAttribute("error", "Błąd! Login i hasło nie mogą być puste!");
+		} else {
+			boolean check = LoginValidate.validateLogin(login, password);
+			if (check == true) {
+
+			} else {
+				url = "/index.jsp";
+				request.setAttribute("error", "Błąd! Podane dane są nieprawidłowe!");
+			}
 		}
-		
 		ServletContext context = getServletContext();
 		RequestDispatcher dispatcher = context.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

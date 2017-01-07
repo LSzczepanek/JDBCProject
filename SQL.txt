@@ -37,3 +37,15 @@ SELECT o.Ordynator_ID, o.imie, o.nazwisko, odd.Oddzial_ID, odd.nazwa, odd.ilosc_
 FROM ordynator o, oddzial odd
 WHERE o.Ordynator_ID = odd.Ordynator_ID
 AND o.Ordynator_ID = ?
+
+10 Usuwanie leku od pacjenta
+DAWKA = SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = ? AND Leki_ID = ?
+UPDATE Leki SET Ilosc = Ilosc + DAWKA WHERE Leki_ID = ? 
+DELETE FROM Pacjent_Leki_Junction WHERE Pacjent_ID = ? AND Leki_ID = ?
+
+11 W dodawaniu leku sprawdziæ, czy ju¿ takiego po³¹czenia nie ma jakimœ
+ ifem je¿eli wyskoczy sql to true czy jak tam wolisz
+SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = ? AND Leki_ID = ?
+If true:
+UPDATE Pacjent_Leki_Junction SET Il_dawek = Il_dawek + ? WHERE Pacjent_ID = ? AND Leki_ID = ?
+

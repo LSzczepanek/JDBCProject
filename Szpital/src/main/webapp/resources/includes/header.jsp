@@ -1,5 +1,6 @@
     <%
      String oddzialName = (String) pageContext.getAttribute("oddzial");
+        String doctorName = (String) pageContext.getAttribute("doctor");
     %>
     <header class="w3-container w3-teal">
         <div class="w3-row">
@@ -10,4 +11,5 @@
             </div>
         </div>
         <p class="w3-lobster" align="right"><%=oddzialName %></p>
+        <p class="w3-lobster" align="right"><%=doctorName %></p>
     </header>
