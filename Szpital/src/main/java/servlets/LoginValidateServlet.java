@@ -37,7 +37,7 @@ public class LoginValidateServlet extends HttpServlet {
 		String url ="/hello-world.jsp";
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		boolean check = LoginValidate(login, password);
+		boolean check = new LoginValidate().validateLogin(login, password);
 		if (check == true)
 		{
 			
