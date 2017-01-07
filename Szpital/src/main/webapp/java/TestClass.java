@@ -1,5 +1,6 @@
 package main.webapp.java;
 
+import main.webapp.databaseHelpers.CheckPatient;
 import main.webapp.databaseHelpers.LoginValidate;
 
 public class TestClass {
@@ -12,6 +13,8 @@ public class TestClass {
 		}else{
 			System.out.println("No");
 		}
+		
+		System.out.println(CheckPatient.checkPatientStatus("Paüdzioch"));
 	}
 
 }

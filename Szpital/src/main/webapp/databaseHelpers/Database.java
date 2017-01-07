@@ -3,6 +3,8 @@ package main.webapp.databaseHelpers;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Database {
@@ -14,6 +16,45 @@ public class Database {
 	private static Connection con = null;
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
+
+	public static String selectFromDatabase(String SQLCommand) {
+
+		String result = "";
+
+		try {
+			// Establish the connection.
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			con = DriverManager.getConnection(connectionUrl);
+
+			// Create and execute an SQL statement that returns some data.
+			String SQL = new String(SQLCommand);
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(SQL);
+
+			result += Database.getResult(rs);
+
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "";
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (Exception e) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (Exception e) {
+				}
+		}
+	}
 
 	public static String selectFromDatabase(String SQLCommand, String column) {
 
@@ -38,15 +79,23 @@ public class Database {
 			return "";
 		} finally {
 			if (rs != null)
-				try {rs.close();} catch (Exception e) {}
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
 			if (stmt != null)
-				try {stmt.close();} catch (Exception e) {}
+				try {
+					stmt.close();
+				} catch (Exception e) {
+				}
 			if (con != null)
-				try {con.close();} catch (Exception e) {}
+				try {
+					con.close();
+				} catch (Exception e) {
+				}
 		}
 	}
-	
-	
+
 	public static String selectFromDatabase(String SQLCommand, String column, String column2) {
 
 		String result = "";
@@ -61,7 +110,7 @@ public class Database {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(SQL);
 			while (rs.next()) {
-				result = new String(rs.getString(column)+rs.getString(column2));
+				result = new String(rs.getString(column) + rs.getString(column2));
 			}
 
 			return result;
@@ -70,24 +119,49 @@ public class Database {
 			return "";
 		} finally {
 			if (rs != null)
-				try {rs.close();} catch (Exception e) {}
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
 			if (stmt != null)
-				try {stmt.close();} catch (Exception e) {}
+				try {
+					stmt.close();
+				} catch (Exception e) {
+				}
 			if (con != null)
-				try {con.close();} catch (Exception e) {}
+				try {
+					con.close();
+				} catch (Exception e) {
+				}
 		}
 	}
-	
-	
-	public static boolean insertIntoDatabase(){
+
+	public static String getResult(ResultSet rs) throws SQLException {
+		ResultSetMetaData metadata = rs.getMetaData();
+		int columnNumber = metadata.getColumnCount();
+		String result = "";
+		// Iterate through the data in the result set and display it.
+		while (rs.next()) {
+			String row = "";
+			for (int i = 1; i <= columnNumber; i++) {
+				row += rs.getString(i) + ", ";
+			}
+			result += row + "\n";
+		}
+
+		return result;
+
+	}
+
+	public static boolean insertIntoDatabase() {
 		return false;
 	}
-	
-	
-	public static boolean deleteFromDatabase(){
+
+	public static boolean deleteFromDatabase() {
 		return false;
 	}
-	public static boolean updateIntoDatabase(){
+
+	public static boolean updateIntoDatabase() {
 		return false;
 	}
 }

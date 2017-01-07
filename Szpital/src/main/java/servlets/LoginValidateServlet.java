@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import main.webapp.databaseHelpers.LoginValidate;
+
 /**
  * Servlet implementation class LoginValidateServlet
  */
@@ -40,7 +42,7 @@ public class LoginValidateServlet extends HttpServlet {
 		String url ="/";
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
-		boolean check = new LoginValidate().validateLogin(login, password);
+		boolean check = LoginValidate.validateLogin(login, password);
 		if (check == true)
 		{
 			

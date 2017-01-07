@@ -5,7 +5,7 @@ Pacjent P
 JOIN Oddzial Od on Od.Oddzial_ID = P.Oddzial_ID
 JOIN Pacjent_Leki_Junction PL on PL.Pacjent_ID = P.Pacjent_ID
 JOIN Leki L on PL.Leki_ID = L.Leki_ID
-
+done
 
 4. Pacjenci na oddziale
 SELECT Od.Oddzial_ID, Od.Nazwa, P.Pacjent_ID, P.Imie, P.Nazwisko, P.Data_ur
