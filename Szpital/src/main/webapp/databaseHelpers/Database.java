@@ -96,47 +96,8 @@ public class Database {
 		}
 	}
 
-	public static String selectFromDatabase(String SQLCommand, String column, String column2) {
 
-		String result = "";
-
-		try {
-			// Establish the connection.
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection(connectionUrl);
-
-			// Create and execute an SQL statement that returns some data.
-			String SQL = new String(SQLCommand);
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(SQL);
-			while (rs.next()) {
-				result = new String(rs.getString(column) + rs.getString(column2));
-			}
-
-			return result;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return "";
-		} finally {
-			if (rs != null)
-				try {
-					rs.close();
-				} catch (Exception e) {
-				}
-			if (stmt != null)
-				try {
-					stmt.close();
-				} catch (Exception e) {
-				}
-			if (con != null)
-				try {
-					con.close();
-				} catch (Exception e) {
-				}
-		}
-	}
-
-	public static String getResult(ResultSet rs) throws SQLException {
+	private static String getResult(ResultSet rs) throws SQLException {
 		ResultSetMetaData metadata = rs.getMetaData();
 		int columnNumber = metadata.getColumnCount();
 		String result = "";
@@ -153,7 +114,7 @@ public class Database {
 
 	}
 
-	public static boolean insertIntoDatabase(String SQLCommand) {
+	public static boolean insertUpdateIntoDatabase(String SQLCommand) {
 
 		try {
 			// Establish the connection.
@@ -194,7 +155,39 @@ public class Database {
 		return false;
 	}
 
-	public static boolean updateIntoDatabase() {
-		return false;
-	}
+//	public static boolean updateIntoDatabase(String SQLCommand) {
+//		
+//		try {
+//			// Establish the connection.
+//			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//			con = DriverManager.getConnection(connectionUrl);
+//
+//			// Create and execute an SQL statement that returns some data.
+//			String SQL = new String(SQLCommand);
+//			stmt = con.createStatement();
+//			stmt.executeUpdate(SQL);
+//			
+//			return true;
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return false;
+//		} finally {
+//			if (rs != null)
+//				try {
+//					rs.close();
+//				} catch (Exception e) {
+//				}
+//			if (stmt != null)
+//				try {
+//					stmt.close();
+//				} catch (Exception e) {
+//				}
+//			if (con != null)
+//				try {
+//					con.close();
+//				} catch (Exception e) {
+//				}
+//		}
+//	}
 }

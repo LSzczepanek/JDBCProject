@@ -32,7 +32,7 @@ public class ConnectionTest {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(SQL);
 
-			System.out.println(Database.getResult(rs));
+			//System.out.println(Database.getResult(rs));
 			// ResultSetMetaData metadata = rs.getMetaData();
 			// int columnNumber = metadata.getColumnCount();
 			// // Iterate through the data in the result set and display it.
