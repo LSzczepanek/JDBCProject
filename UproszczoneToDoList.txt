@@ -1,21 +1,7 @@
 
-2. dodawanie/usuwanie/edycja pacjenta
+2. dodawanie(DONE)/usuwanie(DONE)/edycja pacjenta
 5. Dodanie obiektow do tabel
-10 Usuwanie leku od pacjenta DONE
-11 W dodawaniu leku sprawdziæ, czy ju¿ takiego po³¹czenia nie ma jakimœ
- ifem je¿eli wyskoczy sql to true czy jak tam wolisz DONE
 
 
 
-
-10 Usuwanie leku od pacjenta
-DAWKA = SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = ? AND Leki_ID = ?
-UPDATE Leki SET Ilosc = Ilosc + DAWKA WHERE Leki_ID = ? 
-DELETE FROM Pacjent_Leki_Junction WHERE Pacjent_ID = ? AND Leki_ID = ?
-
-11 W dodawaniu leku sprawdziæ, czy ju¿ takiego po³¹czenia nie ma jakimœ
- ifem je¿eli wyskoczy sql to true czy jak tam wolisz
-SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = ? AND Leki_ID = ?
-If true:
-UPDATE Pacjent_Leki_Junction SET Il_dawek = Il_dawek + ? WHERE Pacjent_ID = ? AND Leki_ID = ?
 

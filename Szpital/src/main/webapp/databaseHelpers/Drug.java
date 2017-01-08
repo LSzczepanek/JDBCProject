@@ -6,7 +6,7 @@ public class Drug {
 
 		boolean result;
 		String SQL;
-		if (dose < checkAmountOfDrug(drugID)) {
+		if (dose <= checkAmountOfDrug(drugID)) {
 			if (checkPatientHaveAlreadyThisDrug(patientID, drugID)) {
 				SQL = "SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = " + patientID + " AND Leki_ID = "
 						+ drugID;

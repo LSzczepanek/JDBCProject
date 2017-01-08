@@ -22,7 +22,8 @@ public class TestClass {
 //		System.out.println(Drug.removeDrugFromPatient(1, 1, 3));
 		
 //		System.out.println(Drug.addAmountOfDrug(1, 2));
-//		System.out.println(Patient.addNewPatient("Bartek2", "Foszmanowicz", "Łódź", "28PSK 6/10", "1993-12-13", 4));
+//		System.out.println(Patient.addNewPatient("Bartek3", "Foszmanowicz", "Łódź", "28PSK 6/10", "1993-12-13", 4));
+		System.out.println(Patient.removePatient(7, 4));
 		System.out.println(Patient.checkStatus("Foszmanowicz"));
 		
 		System.out.println(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddział psychiatryczny"));
@@ -33,9 +34,14 @@ public class TestClass {
 		System.out.println(Patient.checkDrugs("Marian", "Paździoch"));
 		
 		System.out.println("Ilosc leku");
-		System.out.println(Drug.checkAmountOfDrug(1));
+		System.out.println(Drug.checkAmountOfDrug(2));
+		
 		
 		System.out.println(Database.selectFromDatabase("SELECT * FROM Pacjent"));
+		System.out.println(Database.selectFromDatabase("SELECT nazwa,Ilosc_pac FROM Oddzial"));
+		
+//		System.out.println(Drug.addDrugToPatient(5, 1, 12));
+//		System.out.println(Drug.removeDrugFromPatient(6, 2, 1));
 		if(3>=3){
 			System.out.println("yes");
 		}
