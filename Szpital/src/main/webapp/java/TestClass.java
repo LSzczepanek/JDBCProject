@@ -21,17 +21,17 @@ public class TestClass {
 		
 		//System.out.println(AddDrug.addDrugToPatient(1, 1, 55));
 		
-		System.out.println(CheckPatient.checkPatientStatus("Paździoch"));
+		//System.out.println(CheckPatient.checkPatientStatus("Paździoch"));
 		
-		System.out.println(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddziaź kardiologii"));
+		System.out.println(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddział kardiologii"));
 		
-		System.out.println(CheckPatientDrugs.checkDrugs("Marian", "Paździoch"));
-		
-		
-		System.out.println(CheckAmountOfDrug.check(1));
+		//System.out.println(CheckPatientDrugs.checkDrugs("Marian", "Paździoch"));
 		
 		
-		System.out.println(CheckHeadOfHospitalWard.check("MarMar", "MarMar"));
+		//System.out.println(CheckAmountOfDrug.check(1));
+		
+		
+		//System.out.println(CheckHeadOfHospitalWard.check("MarMar", "MarMar"));
 	}
 
 }
