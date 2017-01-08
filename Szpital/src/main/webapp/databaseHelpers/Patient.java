@@ -1,7 +1,20 @@
 package main.webapp.databaseHelpers;
 
-public class CheckPatientDrugs {
+public class Patient {
 
+	public static String checkStatus(String surname) {
+
+		String SQL = "SELECT P.*, Od.Nazwa, L.Nazwa, PL.Il_dawek FROM Pacjent P JOIN "
+				+ "Oddzial Od on Od.Oddzial_ID = P.Oddzial_ID JOIN Pacjent_Leki_Junction PL "
+				+ "on PL.Pacjent_ID = P.Pacjent_ID JOIN Leki L on PL.Leki_ID = L.Leki_ID " + "WHERE P.Nazwisko = '"
+				+ surname + "'";
+		String result = Database.selectFromDatabase(SQL);
+
+		return result;
+
+	}
+	
+	
 	public static String checkDrugs(String name, String surname){
 		
 		String SQL = "SELECT P.Pacjent_ID, P.Imie, P.Nazwisko, P.Data_ur, L.Nazwa, PL.Il_dawek "
@@ -11,4 +24,5 @@ public class CheckPatientDrugs {
 
 		return result;
 	}
+	
 }
