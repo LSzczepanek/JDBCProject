@@ -1,7 +1,7 @@
 
 2. dodawanie/usuwanie/edycja pacjenta
 5. Dodanie obiektow do tabel
-10 Usuwanie leku od pacjenta
+10 Usuwanie leku od pacjenta DONE
 11 W dodawaniu leku sprawdziæ, czy ju¿ takiego po³¹czenia nie ma jakimœ
  ifem je¿eli wyskoczy sql to true czy jak tam wolisz DONE
 

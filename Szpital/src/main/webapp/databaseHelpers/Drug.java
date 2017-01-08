@@ -8,7 +8,8 @@ public class Drug {
 		String SQL;
 		if (dose < checkAmountOfDrug(drugID)) {
 			if (checkPatientHaveAlreadyThisDrug(patientID, drugID)) {
-				SQL = "SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = " + patientID + " AND Leki_ID = " + drugID;
+				SQL = "SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = " + patientID + " AND Leki_ID = "
+						+ drugID;
 				int patientAmountOfDrugAfter = Integer.parseInt(Database.selectFromDatabase(SQL, "Il_dawek"));
 				patientAmountOfDrugAfter += dose;
 				SQL = "UPDATE Pacjent_Leki_Junction SET Il_dawek = " + patientAmountOfDrugAfter + " WHERE Pacjent_ID = "
@@ -22,22 +23,61 @@ public class Drug {
 
 			}
 			if (result) {
-				int drugAmountAfter = checkAmountOfDrug(drugID) - dose;
-				SQL = "UPDATE Leki SET ilosc = " + drugAmountAfter + " WHERE Leki_ID = " + drugID;
-				result = Database.insertUpdateIntoDatabase(SQL);
+				result = addRemoveAmountOfDrug(drugID, -dose);
 			}
 		} else {
 			result = false;
 		}
 		return result;
 	}
-	
-	
-	public static int checkAmountOfDrug(int drugID){
-		
-		String SQL = "SELECT Ilosc FROM Leki L Where Leki_ID = "+drugID;
+
+	public static boolean removeDrugFromPatient(int patientID, int drugID, int doseToRemove) {
+		boolean result;
+		String SQL;
+
+		if (checkPatientHaveAlreadyThisDrug(patientID, drugID)) {
+			SQL = "SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = " + patientID + " AND Leki_ID = "
+					+ drugID;
+			int amountOfPatientDrug = Integer.parseInt(Database.selectFromDatabase(SQL, "Il_dawek"));
+			if (amountOfPatientDrug > doseToRemove) {
+				int patientAmountOfDrugAfter = amountOfPatientDrug - doseToRemove;
+				SQL = "UPDATE Pacjent_Leki_Junction SET Il_dawek = " + patientAmountOfDrugAfter + " WHERE Pacjent_ID = "
+						+ patientID + " AND Leki_ID = " + drugID;
+				result = Database.insertUpdateIntoDatabase(SQL);
+
+				if (result) {
+					result = addRemoveAmountOfDrug(drugID, doseToRemove);
+
+				}
+			} else if (amountOfPatientDrug == doseToRemove) {
+				SQL = "DELETE FROM Pacjent_Leki_Junction WHERE Pacjent_ID = " + patientID + " AND Leki_ID = " + drugID;
+				result = Database.deleteFromDatabase(SQL);
+				
+				if (result) {
+					result = addRemoveAmountOfDrug(drugID, doseToRemove);
+				}
+
+			} else {
+				result = false;
+			}
+		} else {
+			result = false;
+		}
+
+		return result;
+	}
+
+	public static boolean addRemoveAmountOfDrug(int drugID, int amount) {
+		int amountAfterAdd = checkAmountOfDrug(drugID) + amount;
+		String SQL = "UPDATE Leki SET Ilosc = " + amountAfterAdd + " WHERE Leki_ID = " + drugID;
+		return Database.insertUpdateIntoDatabase(SQL);
+	}
+
+	public static int checkAmountOfDrug(int drugID) {
+
+		String SQL = "SELECT Ilosc FROM Leki L Where Leki_ID = " + drugID;
 		int result = Integer.parseInt(Database.selectFromDatabase(SQL, "ilosc"));
-		
+
 		return result;
 	}
 
