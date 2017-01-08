@@ -1,6 +1,6 @@
 package main.webapp.java;
 
-import main.webapp.databaseHelpers.AddDrug;
+import main.webapp.databaseHelpers.Drug;
 import main.webapp.databaseHelpers.CheckAmountOfDrug;
 import main.webapp.databaseHelpers.CheckHeadOfHospitalWard;
 import main.webapp.databaseHelpers.CheckPatient;
@@ -32,7 +32,7 @@ public class TestClass {
 		System.out.println(CheckPatientDrugs.checkDrugs("Marian", "Paździoch"));
 		
 		System.out.println("Ilosc leku");
-		System.out.println(CheckAmountOfDrug.check(2));
+		System.out.println(Drug.checkAmountOfDrug(2));
 //		if(AddDrug.checkPatientHaveAlreadyThisDrug(1,2)){
 //			System.out.println("Yes");
 //		}

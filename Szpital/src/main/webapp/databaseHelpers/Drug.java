@@ -1,12 +1,12 @@
 package main.webapp.databaseHelpers;
 
-public class AddDrug {
+public class Drug {
 
 	public static boolean addDrugToPatient(int patientID, int drugID, int dose) {
 
 		boolean result;
 		String SQL;
-		if (dose < CheckAmountOfDrug.check(drugID)) {
+		if (dose < checkAmountOfDrug(drugID)) {
 			if (checkPatientHaveAlreadyThisDrug(patientID, drugID)) {
 				SQL = "SELECT Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = " + patientID + " AND Leki_ID = " + drugID;
 				int patientAmountOfDrugAfter = Integer.parseInt(Database.selectFromDatabase(SQL, "Il_dawek"));
@@ -22,13 +22,22 @@ public class AddDrug {
 
 			}
 			if (result) {
-				int drugAmountAfter = CheckAmountOfDrug.check(drugID) - dose;
+				int drugAmountAfter = checkAmountOfDrug(drugID) - dose;
 				SQL = "UPDATE Leki SET ilosc = " + drugAmountAfter + " WHERE Leki_ID = " + drugID;
 				result = Database.insertUpdateIntoDatabase(SQL);
 			}
 		} else {
 			result = false;
 		}
+		return result;
+	}
+	
+	
+	public static int checkAmountOfDrug(int drugID){
+		
+		String SQL = "SELECT Ilosc FROM Leki L Where Leki_ID = "+drugID;
+		int result = Integer.parseInt(Database.selectFromDatabase(SQL, "ilosc"));
+		
 		return result;
 	}
 
