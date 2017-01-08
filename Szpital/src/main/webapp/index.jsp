@@ -12,14 +12,10 @@
     <%@include file="resources/includes/header.jsp" %>
     <!-- Page
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-	
 	<%
 		session.invalidate(); 
-		String error_msg = "";
-		Object error = request.getAttribute("error");
-		if (error != null)
-			error_msg = error.toString();
 	%>
+	<c:set var="error_msg" value="${requestScope.error}" scope="page"/>
     <div id = "main" class="w3-container w3-section w3-main">
         <div class="w3-third w3-container"></div>
         <div class="w3-card-4 w3-center w3-third">
@@ -33,7 +29,7 @@
                 <label class="w3-label w3-validate" style=" display:block">Hasło</label>
                 <br><button class="w3-btn-block w3-blue-grey w3-hover-green">Login</button>
             </form> 
-            <p class="w3-text-red"><%=error_msg %></p>
+            <p class="w3-text-red">${error_msg}</p>
         </div>
         <div class="w3-third w3-container"></div>
     </div>

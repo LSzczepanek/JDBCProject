@@ -37,10 +37,12 @@ public class PatientsInHospitalWardServlet extends HttpServlet {
 		String result = PatientsInHospitalWard.checkPatientsInHospitalWard(ward);
 		if (result != null) {
 			String patientRow[] = result.split("\\r?\\n");
+			String patientInfo[][] = null;
 			for (int i = 0; i < patientRow.length; i++) {
-				String patientInfo[] = patientRow[i].split(", ");
-				request.setAttribute("patientRow[" + i + "]", patientInfo);
+				patientInfo[i] = patientRow[i].split(", ");
+				
 			}
+			request.setAttribute("patientInfo", patientInfo);
 		}
 		ServletContext context = getServletContext();
 		RequestDispatcher dispatcher = context.getRequestDispatcher(url);

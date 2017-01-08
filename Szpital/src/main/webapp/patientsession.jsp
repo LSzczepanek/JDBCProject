@@ -15,13 +15,9 @@
 
 	<!-- Page
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-	<c:set var="doctor_id" value="${wardData[0]}" scope="session" />
-	<c:set var="doctor" value="Dr. ${wardData[1]} ${wardData[2]}" scope="session" />
-	<c:set var="ward" value="${wardData[3]}" scope="session" />
-	<c:set var="ward" value="${wardData[4]}" scope="session" />
-	<c:set var="patientAmount" value="${wardData[5]}" scope="session" />
-	<c:set var="check" value="check" scope="session" />
-	<c:redirect url="welcome.jsp"/>
+	<c:set var="patientInfo" value="${patientInfo}" scope="session" />
+
+	<c:redirect url="patient.jsp"/>
 
 	<!-- Footer
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
