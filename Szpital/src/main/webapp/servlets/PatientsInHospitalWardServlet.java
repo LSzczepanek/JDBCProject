@@ -32,11 +32,11 @@ public class PatientsInHospitalWardServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "/patients.jsp";
+		String url = "/patient.jsp";
 		String ward = request.getParameter("ward");
 		String result = PatientsInHospitalWard.checkPatientsInHospitalWard(ward);
 		if (result != null) {
-			String patientRow[] = result.split("\n");
+			String patientRow[] = result.split("\\r?\\n");
 			for (int i = 0; i < patientRow.length; i++) {
 				String patientInfo[] = patientRow[i].split(", ");
 				request.setAttribute("patientRow[" + i + "]", patientInfo);

@@ -23,10 +23,6 @@
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	
 	<%
-		String error_msg = "";
-		Object error = request.getAttribute("error");
-		if (error != null)
-			error_msg = error.toString();
 		String doctor = (String) session.getAttribute("doctor");
 		String ward = (String) session.getAttribute("ward");
 		String patientAmount = (String) session.getAttribute("patientAmount");
@@ -41,8 +37,8 @@
                 <div class="w3-container">
 				<p>Obecnie na oddziale <%=ward %> znajduje się <%=patientAmount %> pacjentów. Aby przejrzeć ich listę wciśnij przycisk <b>Lista</b></p>
 				<form action="patients" class="w3-container" method=post>
-				<input  name="ward" value="<%=ward %>">
-				<br><button class="w3-btn w3-blue-grey">Lista</button>
+				<input type="hidden" name="ward" value="<%=ward %>">
+				<br><button class="w3-btn w3-blue-grey w3-align-center">Lista</button>
 				</form>
                 </div>
             </div>
