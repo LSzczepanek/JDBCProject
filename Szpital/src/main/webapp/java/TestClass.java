@@ -16,14 +16,14 @@ public class TestClass {
 		}else{
 			System.out.println("No");
 		}
-		
+		Patient.updatePatient(6, "Bartek", "Foszmanowicz", "Łódź", "28PSK 6/10", "1994-12-13", 4);
 //		System.out.println("Dodaj lek");
 //		System.out.println(Drug.addDrugToPatient(1, 1, 5));
 //		System.out.println(Drug.removeDrugFromPatient(1, 1, 3));
 		
 //		System.out.println(Drug.addAmountOfDrug(1, 2));
 //		System.out.println(Patient.addNewPatient("Bartek3", "Foszmanowicz", "Łódź", "28PSK 6/10", "1993-12-13", 4));
-		System.out.println(Patient.removePatient(7, 4));
+//		System.out.println(Patient.removePatient(7, 4));
 		System.out.println(Patient.checkStatus("Foszmanowicz"));
 		
 		System.out.println(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddział psychiatryczny"));
@@ -38,7 +38,7 @@ public class TestClass {
 		
 		
 		System.out.println(Database.selectFromDatabase("SELECT * FROM Pacjent"));
-		System.out.println(Database.selectFromDatabase("SELECT nazwa,Ilosc_pac FROM Oddzial"));
+		System.out.println(Database.selectFromDatabase("SELECT nazwa,Ilosc_pac, Oddzial_ID FROM Oddzial"));
 		
 //		System.out.println(Drug.addDrugToPatient(5, 1, 12));
 //		System.out.println(Drug.removeDrugFromPatient(6, 2, 1));
