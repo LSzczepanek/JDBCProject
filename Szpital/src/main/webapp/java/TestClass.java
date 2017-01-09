@@ -16,7 +16,7 @@ public class TestClass {
 		}else{
 			System.out.println("No");
 		}
-//		Patient.updatePatient(6, "Bartek", "Foszmanowicz", "Łódź", "28PSK 6/10", "1994-12-13", 4);
+//		Patient.updatePatient(6, "Bartek", "Foszmanowicz", "Ĺ�ĂłdĹş", "28PSK 6/10", "1994-12-13", 4);
 //		System.out.println("Dodaj lek");
 //		System.out.println(Drug.addDrugToPatient(1, 1, 5));
 //		System.out.println(Drug.addDrugToPatient(2, 1, 5));
@@ -24,11 +24,12 @@ public class TestClass {
 //		System.out.println(Drug.removeDrugFromPatient(1, 1, 3));
 		
 //		System.out.println(Drug.addAmountOfDrug(1, 2));
-//		System.out.println(Patient.addNewPatient("Bartek3", "Foszmanowicz", "Łódź", "28PSK 6/10", "1993-12-13", 4));
+//		System.out.println(Patient.addNewPatient("Bartek3", "Foszmanowicz", "Ĺ�ĂłdĹş", "28PSK 6/10", "1993-12-13", 4));
 //		System.out.println(Patient.removePatient(7, 4));
 		System.out.println(Patient.checkStatus("Foszmanowicz"));
 		
 		System.out.println(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddział kardiologii"));
+		
 		String[] test = PatientsInHospitalWard.getArrayOfResult(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddział kardiologii"));
 		
 		System.out.println("Start of Array");
@@ -37,9 +38,22 @@ public class TestClass {
 			System.out.println(count++ +": "+string);
 		}
 		
-		System.out.println("End of Array");
+		System.out.println("End of Array\n");
 		
-		System.out.println(Patient.checkDrugs("Marian", "Paździoch"));
+		String[][] test2 = PatientsInHospitalWard.getArrayOfResult2(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddział kardiologii"));
+		
+		System.out.println("Start of Array");
+		int count2 = 0;
+		for (String[] string : test2) {
+			System.out.println("\nWiersz "+count2++);
+			for (String string2 : string) {
+				System.out.print(string2+", ");
+			}
+		}
+		
+		System.out.println("\nEnd of Array");
+		
+		System.out.println(Patient.checkDrugs("Marian", "PaĹşdzioch"));
 		
 		System.out.println("Ilosc leku");
 		System.out.println(Drug.checkAmountOfDrug(2));
@@ -54,7 +68,7 @@ public class TestClass {
 			System.out.println("yes");
 		}
 		
-//		System.out.println(Patient.addNewPatient("Bartek", "Foszmanowicz", "Łódź", "28PSK 6/10", "1993-12-13", 4));
+//		System.out.println(Patient.addNewPatient("Bartek", "Foszmanowicz", "Ĺ�ĂłdĹş", "28PSK 6/10", "1993-12-13", 4));
 //		if(AddDrug.checkPatientHaveAlreadyThisDrug(1,2)){
 //			System.out.println("Yes");
 //		}
