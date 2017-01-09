@@ -16,9 +16,11 @@ public class TestClass {
 		}else{
 			System.out.println("No");
 		}
-		Patient.updatePatient(6, "Bartek", "Foszmanowicz", "Łódź", "28PSK 6/10", "1994-12-13", 4);
+//		Patient.updatePatient(6, "Bartek", "Foszmanowicz", "Łódź", "28PSK 6/10", "1994-12-13", 4);
 //		System.out.println("Dodaj lek");
 //		System.out.println(Drug.addDrugToPatient(1, 1, 5));
+//		System.out.println(Drug.addDrugToPatient(2, 1, 5));
+//		System.out.println(Drug.addDrugToPatient(4, 1, 5));
 //		System.out.println(Drug.removeDrugFromPatient(1, 1, 3));
 		
 //		System.out.println(Drug.addAmountOfDrug(1, 2));
@@ -26,10 +28,16 @@ public class TestClass {
 //		System.out.println(Patient.removePatient(7, 4));
 		System.out.println(Patient.checkStatus("Foszmanowicz"));
 		
-		System.out.println(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddział psychiatryczny"));
+		System.out.println(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddział kardiologii"));
+		String[] test = PatientsInHospitalWard.getArrayOfResult(PatientsInHospitalWard.checkPatientsInHospitalWard("Oddział kardiologii"));
 		
+		System.out.println("Start of Array");
+		int count = 0;
+		for (String string : test) {
+			System.out.println(count++ +": "+string);
+		}
 		
-		
+		System.out.println("End of Array");
 		
 		System.out.println(Patient.checkDrugs("Marian", "Paździoch"));
 		
