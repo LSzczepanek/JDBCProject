@@ -33,7 +33,7 @@
 						pacjentów. Aby przejrzeć ich listę wciśnij przycisk <b>Lista</b>
 					</p>
 					<form action="patients" class="w3-container" method=post>
-						<input type="hidden" name="ward" value="${ward}"> <br>
+						<input type="hidden" name="wardName" value="${ward}"> <br>
 						<button class="w3-btn w3-blue-grey w3-center">Lista</button>
 					</form>
 				</div>

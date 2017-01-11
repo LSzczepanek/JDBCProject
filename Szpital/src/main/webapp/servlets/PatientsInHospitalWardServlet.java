@@ -33,17 +33,11 @@ public class PatientsInHospitalWardServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String url = "/patientsession.jsp";
-		String ward = request.getParameter("ward");
-		String result = PatientsInHospitalWard.checkPatientsInHospitalWard(ward);
-		if (result != null) {
-			String patientRow[] = result.split("\\r?\\n");
-			String[][] patientInfo = null;
-			for (int i = 0; i < patientRow.length; i++) {
-				patientInfo[i] = patientRow[i].split(", ");
-				
-			}
+		String ward = request.getParameter("wardName");
+		//String result = PatientsInHospitalWard.checkPatientsInHospitalWard(ward);
+		String[][] patientInfo = PatientsInHospitalWard.getArrayOfResult2(PatientsInHospitalWard.checkPatientsInHospitalWard(ward));
 			request.setAttribute("patientInfo", patientInfo);
-		}
+			
 		ServletContext context = getServletContext();
 		RequestDispatcher dispatcher = context.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
