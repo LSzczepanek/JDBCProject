@@ -12,7 +12,7 @@
     <form method="post" action="patients">
     <button>dupa</button>
     </form>
-    <a><c:out value='${requestScope.PatientRow[1]}'/></a>
+    <a><c:out value='${requestScope.patientInfo}'/></a>
   <%--       <table id="messages" border="1">
             <tr>
                 <th>Message</th>

@@ -32,9 +32,9 @@
 						Obecnie na oddziale ${ward} znajduje się ${patientAmount}
 						pacjentów. Aby przejrzeć ich listę wciśnij przycisk <b>Lista</b>
 					</p>
-					<form action="patients" class="w3-container" method=post>
-						<input type="hidden" name="wardName" value="${ward}"> <br>
-						<button class="w3-btn w3-blue-grey w3-center">Lista</button>
+					<form action="patients" class="w3-container w3-center" method=post>
+						<input type="hidden" name="wardName" value="${ward}"/>
+						<button class="w3-btn w3-blue-grey">Lista</button>
 					</form>
 				</div>
 			</div>
@@ -47,7 +47,9 @@
 
 	<!-- Footer
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-	<%@include file="resources/includes/footer.jsp"%>
+	<div class="w3-row">
+        <p class="w3-display-bottomright w3-text-grey w3-small">Created by Dawid Kiciński &amp Łukasz Szczepanek</p>
+    </div>
 
 </body>
 </html>

@@ -32,11 +32,14 @@ public class PatientsInHospitalWardServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 		String url = "/patientsession.jsp";
 		String ward = request.getParameter("wardName");
-		//String result = PatientsInHospitalWard.checkPatientsInHospitalWard(ward);
+		String result = PatientsInHospitalWard.checkPatientsInHospitalWard(ward);
+		result.replaceAll("\\s+", "");
 		String[][] patientInfo = PatientsInHospitalWard.getArrayOfResult2(PatientsInHospitalWard.checkPatientsInHospitalWard(ward));
 			request.setAttribute("patientInfo", patientInfo);
+
 			
 		ServletContext context = getServletContext();
 		RequestDispatcher dispatcher = context.getRequestDispatcher(url);

@@ -9,13 +9,12 @@
 <body>
 	<!-- Header
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-	<%
-		String checkPage = (String) session.getAttribute("check");
-		if (checkPage != "check") {
-			String redirectURL = "/Szpital/index.jsp";
-			response.sendRedirect(redirectURL);
-		}
-	%>
+	<c:if test="${empty sessionScope.check}">
+		<%
+			session.invalidate();
+		%>
+		<c:redirect url="index.jsp" />
+	</c:if>
 	<%@include file="resources/includes/header.jsp"%>
 	<!-- Page
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -33,7 +32,7 @@
 						<th>Data ur.</th>
 						<th>Miasto</th>
 						<th>Adres</th>
-						<th>Lista leków</th>
+						<th>Opcje</th>
 					</tr>
 				</thead>
 				<c:forEach var="patient" items='${sessionScope.patientInfo}'>
@@ -45,9 +44,17 @@
 					<td>${patient[5]}</td>
 					<td>${patient[6]}</td>
 					<td>${patient[7]}</td>
-					<td><a class='w3-btn-floating w3-grey w3-text-white'
-						onclick="document.getElementById('${patient[2]}').style.display='block';"><i
-							class='fa fa-minus' aria-hidden='true'></i></a></td>
+					<td><div class="w3-third">
+							<a class='w3-btn w3-red'
+								onclick="document.getElementById('${patient[2]}').style.display='block';">Usuń</a>
+						</div>
+						<div class="w3-third">
+							<form action="/leki" method=post>
+								<button class='w3-btn w3-blue'>Leki</button>
+							</form>
+						</div>
+						<div class="w3-third"><a class='w3-btn w3-teal'
+								onclick="document.getElementById(edit'${patient[2]}').style.display='block';">Edytuj</a></div></td>
 					</tr>
 					<!-- popup z zapytaniem czy usunąć -->
 					<div id="${patient[2]}" class="w3-modal">
@@ -61,7 +68,10 @@
 									pacjentów?</p>
 								<div class="w3-row w3-center">
 									<div class="w3-half">
-										<form method="post">
+										<form method="post" action="patientDelete">
+										<input type="hidden" name="patientId" value="${patient[2]}"/>
+										<input type="hidden" name="wardId" value="${sessionScope.ward_id}"/>
+										<input type="hidden" name="wardName" value="${sessionScope.ward}"/>
 											<button class="w3-btn w3-red" type="submit" name="delete"
 												style="width: 33.3%">
 												<i class="fa fa-check"></i><b> Tak</b>
@@ -87,10 +97,15 @@
 					<td></td>
 					<td></td>
 					<td></td>
-					<td><form action="/addpatient.jsp" class="w3-container"
+					<td>
+					<div class="w3-third"><a>&nbsp</a></div>
+					<div class="w3-third"><a>&nbsp</a></div>
+					<div class="w3-third">
+					<form action="patientAdd" 
 							method=post>
-							<button class="w3-btn w3-blue-grey w3-align-center">Dodaj</button>
-						</form></td>
+							<button class="w3-btn w3-blue-grey">Dodaj</button>
+						</form></div>
+						</td>
 				</tr>
 			</table>
 
@@ -103,7 +118,10 @@
 
 	<!-- Footer
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-	<%@include file="resources/includes/footer.jsp"%>
+	<div class="w3-row">
+		<p class="w3-display-bottomright w3-text-grey w3-small">Created by
+			Dawid Kiciński &amp Łukasz Szczepanek</p>
+	</div>
 
 </body>
 </html>
