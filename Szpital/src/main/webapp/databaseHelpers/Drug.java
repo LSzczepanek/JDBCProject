@@ -66,6 +66,24 @@ public class Drug {
 
 		return result;
 	}
+	
+	public static boolean removeAllDrugFromPatient(int patientID){
+		
+		boolean result;
+		boolean loopResult = true;
+		String[] sqlResult;
+		String SQL = "SELECT TOP 1 Leki_ID, Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = "+patientID;
+		sqlResult = Database.selectFromDatabase(SQL, "Leki_ID", "Il_dawek");
+		
+		while(!sqlResult[0].equals("error") && loopResult){
+			loopResult = removeDrugFromPatient(patientID, Integer.parseInt(sqlResult[0]), Integer.parseInt(sqlResult[1]));
+			sqlResult = Database.selectFromDatabase(SQL, "Leki_ID", "Il_dawek");
+		}
+		
+		result = loopResult;
+		
+		return result;
+	}
 
 	public static boolean addRemoveAmountOfDrug(int drugID, int amount) {
 		int amountAfterAdd = checkAmountOfDrug(drugID) + amount;
@@ -80,6 +98,13 @@ public class Drug {
 
 		return result;
 	}
+	
+	public static String printAllAvalaibleDrugs(){
+		String SQL = "SELECT * FROM Leki";
+		String result = Database.selectFromDatabase(SQL);
+		
+		return result;
+	}
 
 	private static boolean checkPatientHaveAlreadyThisDrug(int patientID, int drugID) {
 		String SQL = "SELECT Leki_ID FROM Pacjent_Leki_Junction WHERE Pacjent_ID = " + patientID;
@@ -91,4 +116,5 @@ public class Drug {
 		}
 
 	}
+	
 }

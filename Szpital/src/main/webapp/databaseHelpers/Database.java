@@ -95,6 +95,56 @@ public class Database {
 				}
 		}
 	}
+	
+	public static String[] selectFromDatabase(String SQLCommand, String column, String column2) {
+
+		String result = "";
+		String[] resultArray = new String[2];
+
+		try {
+			// Establish the connection.
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			con = DriverManager.getConnection(connectionUrl);
+
+			// Create and execute an SQL statement that returns some data.
+			String SQL = new String(SQLCommand);
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(SQL);
+			while (rs.next()) {
+				result = new String(rs.getString(column)+","+new String(rs.getString(column2)));
+			}
+			
+			resultArray = result.split(",");
+			if(resultArray[0].length() == 0){
+				resultArray[0] = "error";
+				//resultArray[1] = "";
+				return resultArray;
+			}
+
+			return resultArray;
+		} catch (Exception e) {
+			e.printStackTrace();
+			resultArray[0] = "error";
+			//resultArray[1] = "";
+			return resultArray;
+		} finally {
+			if (rs != null)
+				try {
+					rs.close();
+				} catch (Exception e) {
+				}
+			if (stmt != null)
+				try {
+					stmt.close();
+				} catch (Exception e) {
+				}
+			if (con != null)
+				try {
+					con.close();
+				} catch (Exception e) {
+				}
+		}
+	}
 
 
 	private static String getResult(ResultSet rs) throws SQLException {

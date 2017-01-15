@@ -21,9 +21,13 @@ public class Patient {
 
 		boolean result;
 
+		result = Drug.removeAllDrugFromPatient(patientID);
 		String SQL = "DELETE FROM Pacjent WHERE Pacjent_ID = " + patientID;
+		
+		if(result){
 		result = Database.deleteFromDatabase(SQL);
-
+		}
+		
 		if (result) {
 			result = updateAmountOfPatients(hospitalWard_ID, -1);
 		}
