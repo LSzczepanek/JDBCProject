@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import main.webapp.databaseHelpers.PatientsInHospitalWard;
+import main.webapp.databaseHelpers.ResultHelper;
 
 /**
  * Servlet implementation class PatientsInHospitalWardServlet
@@ -37,7 +38,7 @@ public class PatientsInHospitalWardServlet extends HttpServlet {
 		String ward = request.getParameter("wardName");
 		String result = PatientsInHospitalWard.checkPatientsInHospitalWard(ward);
 		result.replaceAll("\\s+", "");
-		String[][] patientInfo = PatientsInHospitalWard.getArrayOfResult2(PatientsInHospitalWard.checkPatientsInHospitalWard(ward));
+		String[][] patientInfo = ResultHelper.getArrayOfResult2(PatientsInHospitalWard.checkPatientsInHospitalWard(ward));
 			request.setAttribute("patientInfo", patientInfo);
 
 			
