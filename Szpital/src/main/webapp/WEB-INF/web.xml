@@ -34,6 +34,18 @@
   	<description></description>
   	<servlet-class>main.webapp.servlets.PatientDeleteServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>PatientAddServlet</servlet-name>
+  	<display-name>PatientAddServlet</display-name>
+  	<description></description>
+  	<servlet-class>main.webapp.servlets.PatientAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>PatientEditServlet</servlet-name>
+  	<display-name>PatientEditServlet</display-name>
+  	<description></description>
+  	<servlet-class>main.webapp.servlets.PatientEditServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>TestConnection</servlet-name>
   	<url-pattern>/TestConnection</url-pattern>
@@ -53,6 +65,22 @@
   <servlet-mapping>
   	<servlet-name>PatientDeleteServlet</servlet-name>
   	<url-pattern>/patientDelete</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PatientAddServlet</servlet-name>
+  	<url-pattern>/PatientAddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PatientAddServlet</servlet-name>
+  	<url-pattern>/addpatient</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PatientEditServlet</servlet-name>
+  	<url-pattern>/PatientEditServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PatientEditServlet</servlet-name>
+  	<url-pattern>/editpatient</url-pattern>
   </servlet-mapping>
 </web-app>
 
