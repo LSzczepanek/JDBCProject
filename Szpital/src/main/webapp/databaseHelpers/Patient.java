@@ -88,5 +88,12 @@ public class Patient {
 
 		return result;
 	}
+	
+	public static String printPatient(int patientId)
+	{
+		String SQL = "SELECT Imie, Nazwisko FROM pacjent WHERE Pacjent_ID = " + patientId;
+		String result = Database.selectFromDatabase(SQL);
+		return result;
+	}
 
 }

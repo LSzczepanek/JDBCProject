@@ -46,6 +46,18 @@
   	<description></description>
   	<servlet-class>main.webapp.servlets.PatientEditServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>DrugListServlet</servlet-name>
+  	<display-name>DrugListServlet</display-name>
+  	<description></description>
+  	<servlet-class>main.webapp.servlets.DrugListServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DrugAddServlet</servlet-name>
+  	<display-name>DrugAddServlet</display-name>
+  	<description></description>
+  	<servlet-class>main.webapp.servlets.DrugAddServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>TestConnection</servlet-name>
   	<url-pattern>/TestConnection</url-pattern>
@@ -81,6 +93,22 @@
   <servlet-mapping>
   	<servlet-name>PatientEditServlet</servlet-name>
   	<url-pattern>/editpatient</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DrugListServlet</servlet-name>
+  	<url-pattern>/DrugListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DrugListServlet</servlet-name>
+  	<url-pattern>/druglist</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DrugAddServlet</servlet-name>
+  	<url-pattern>/DrugAddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DrugAddServlet</servlet-name>
+  	<url-pattern>/adddrug</url-pattern>
   </servlet-mapping>
 </web-app>
 

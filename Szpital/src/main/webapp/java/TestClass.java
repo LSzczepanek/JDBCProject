@@ -41,7 +41,7 @@ public class TestClass {
 		
 		System.out.println("End of Array\n");
 		
-		String[][] test2 = ResultHelper.getArrayOfResult2(Drug.printAllAvalaibleDrugs());
+		String[][] test2 = ResultHelper.getArrayOfResult2(Drug.printAllAvalaibleDrugs(2));
 		
 		System.out.println("Start of Array");
 		int count2 = 0;
@@ -62,7 +62,7 @@ public class TestClass {
 		System.out.println(Database.selectFromDatabase("SELECT * FROM Pacjent"));
 		System.out.println(Database.selectFromDatabase("SELECT nazwa,Ilosc_pac, Oddzial_ID FROM Oddzial"));
 		
-		System.out.println(Drug.printAllAvalaibleDrugs());
+		System.out.println(Drug.printAllAvalaibleDrugs(2));
 		
 //		System.out.println("Ilosc leku");
 //		System.out.println(Drug.checkAmountOfDrug(1));

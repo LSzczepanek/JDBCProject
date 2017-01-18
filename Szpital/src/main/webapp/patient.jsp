@@ -50,7 +50,8 @@
 								onclick="document.getElementById('${patient[2]}').style.display='block';">Usuń</a>
 						</div>
 						<div class="w3-third">
-							<form action="/leki" method=post>
+							<form action="druglist" method=post>
+								<input type="hidden" name="patientId" value="${patient[2]}" />
 								<button class='w3-btn w3-blue'>Leki</button>
 							</form>
 						</div>
@@ -102,20 +103,23 @@
 									onclick="document.getElementById('edit${patient[2]}').style.display = 'none';  document.getElementById('editpatsubform${patient[2]}').reset();"
 									class="w3-closebtn"><i class="fa fa-times"></i></span>
 								<h2>Edytuj</h2>
-								<form action="editpatient" method="post" id="editpatsubform${patient[2]}">
+								<form action="editpatient" method="post"
+									id="editpatsubform${patient[2]}">
 									<div class="w3-row">
 										<div class="w3-half">
 
 											<div class="w3-padding">
 												<label>Imię:</label> <input class="w3-input w3-border-0"
-													name="name" placeholder="Imię" value="${fn:replace(patient[3],' ', '')}"
-													required />
+													name="name" placeholder="Imię"
+													value="${fn:replace(patient[3],' ', '')}" required />
 
 											</div>
-											<c:set var="date" value="${fn:split(fn:replace(patient[5],' ', ''),'-')}" />
+											<c:set var="date"
+												value="${fn:split(fn:replace(patient[5],' ', ''),'-')}" />
 											<div class="w3-padding">
 												<label>Miasto:</label> <input class="w3-input w3-border-0"
-													name="city" placeholder="Miasto" value="${fn:replace(patient[6],' ', '')}" />
+													name="city" placeholder="Miasto"
+													value="${fn:replace(patient[6],' ', '')}" />
 											</div>
 											<div class="w3-row-padding">
 												<a>Data urodzenia:</a> <br>
@@ -142,12 +146,13 @@
 
 											<div class="w3-padding">
 												<label>Nazwisko:</label> <input class="w3-input w3-border-0"
-													name="surname" placeholder="Nazwisko" value="${fn:replace(patient[4],' ', '')}"
-													required />
+													name="surname" placeholder="Nazwisko"
+													value="${fn:replace(patient[4],' ', '')}" required />
 											</div>
 											<div class="w3-padding">
 												<label>Adres:</label> <input class="w3-input w3-border-0"
-													name="address" placeholder="Adres" value="${fn:replace(patient[7],' ', '')}" />
+													name="address" placeholder="Adres"
+													value="${fn:replace(patient[7],' ', '')}" />
 											</div>
 
 										</div>
@@ -162,7 +167,8 @@
 								<div class="w3-row w3-center">
 									<div class="w3-half">
 										<button class="w3-btn w3-teal" type="submit"
-											form="editpatsubform${patient[2]}" name="pateddit" style="width: 33.3%">
+											form="editpatsubform${patient[2]}" name="pateddit"
+											style="width: 33.3%">
 											<i class="fa fa-check"></i><b> Akceptuj</b>
 										</button>
 									</div>

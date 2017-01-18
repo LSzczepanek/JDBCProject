@@ -52,7 +52,7 @@ public class Drug {
 			} else if (amountOfPatientDrug == doseToRemove) {
 				SQL = "DELETE FROM Pacjent_Leki_Junction WHERE Pacjent_ID = " + patientID + " AND Leki_ID = " + drugID;
 				result = Database.deleteFromDatabase(SQL);
-				
+
 				if (result) {
 					result = addRemoveAmountOfDrug(drugID, doseToRemove);
 				}
@@ -66,22 +66,23 @@ public class Drug {
 
 		return result;
 	}
-	
-	public static boolean removeAllDrugFromPatient(int patientID){
-		
+
+	public static boolean removeAllDrugFromPatient(int patientID) {
+
 		boolean result;
 		boolean loopResult = true;
 		String[] sqlResult;
-		String SQL = "SELECT TOP 1 Leki_ID, Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = "+patientID;
+		String SQL = "SELECT TOP 1 Leki_ID, Il_dawek FROM Pacjent_Leki_Junction WHERE Pacjent_ID = " + patientID;
 		sqlResult = Database.selectFromDatabase(SQL, "Leki_ID", "Il_dawek");
-		
-		while(!sqlResult[0].equals("error") && loopResult){
-			loopResult = removeDrugFromPatient(patientID, Integer.parseInt(sqlResult[0]), Integer.parseInt(sqlResult[1]));
+
+		while (!sqlResult[0].equals("error") && loopResult) {
+			loopResult = removeDrugFromPatient(patientID, Integer.parseInt(sqlResult[0]),
+					Integer.parseInt(sqlResult[1]));
 			sqlResult = Database.selectFromDatabase(SQL, "Leki_ID", "Il_dawek");
 		}
-		
+
 		result = loopResult;
-		
+
 		return result;
 	}
 
@@ -98,11 +99,11 @@ public class Drug {
 
 		return result;
 	}
-	
-	public static String printAllAvalaibleDrugs(){
-		String SQL = "SELECT * FROM Leki";
+
+	public static String printAllAvalaibleDrugs(int patientID) {
+		String SQL = "SELECT l.Leki_ID, l.Nazwa, l.Ilosc, plj.Il_dawek FROM Leki as l LEFT JOIN Pacjent_Leki_Junction as plj ON l.Leki_ID = plj.Leki_ID AND plj.Pacjent_ID = " + patientID;
 		String result = Database.selectFromDatabase(SQL);
-		
+
 		return result;
 	}
 
@@ -116,5 +117,12 @@ public class Drug {
 		}
 
 	}
-	
+
+	public static String printCurrentDrugAmount(int patientID, int drugID) {
+		String SQL = "SELECT Leki_ID FROM Pacjent_Leki_Junction WHERE Pacjent_ID = " + patientID + "AND Leki_ID = "
+				+ drugID;
+		String result = Database.selectFromDatabase(SQL);
+		return result;
+	}
+
 }
