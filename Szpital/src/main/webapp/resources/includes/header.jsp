@@ -21,6 +21,7 @@
 			<p align="right">
 				<c:out value='${doctorName}' />
 			</p>
+			
 		</div>
 	</div>
 

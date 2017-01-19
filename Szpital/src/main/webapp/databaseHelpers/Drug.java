@@ -124,5 +124,12 @@ public class Drug {
 		String result = Database.selectFromDatabase(SQL);
 		return result;
 	}
+	
+	public static String searchFromAllAvalaibleDrugs(int patientID, String search) {
+		String SQL = "SELECT l.Leki_ID, l.Nazwa, l.Ilosc, plj.Il_dawek FROM Leki as l LEFT JOIN Pacjent_Leki_Junction as plj ON l.Leki_ID = plj.Leki_ID AND plj.Pacjent_ID = " + patientID +"WHERE stuff(coalesce('|' + l.Nazwa, '') + coalesce('|' + cast(l.Ilosc AS varchar(255)), '')  + coalesce('|' + cast(plj.Il_dawek AS varchar(255)), ''), 1, 1, '') LIKE '%"+search+"%'";
+		String result = Database.selectFromDatabase(SQL);
+
+		return result;
+	}
 
 }

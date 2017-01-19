@@ -58,6 +58,18 @@
   	<description></description>
   	<servlet-class>main.webapp.servlets.DrugAddServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>PatientSearchServlet</servlet-name>
+  	<display-name>PatientSearchServlet</display-name>
+  	<description></description>
+  	<servlet-class>main.webapp.servlets.PatientSearchServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DrugSearchServlet</servlet-name>
+  	<display-name>DrugSearchServlet</display-name>
+  	<description></description>
+  	<servlet-class>main.webapp.servlets.DrugSearchServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>TestConnection</servlet-name>
   	<url-pattern>/TestConnection</url-pattern>
@@ -109,6 +121,18 @@
   <servlet-mapping>
   	<servlet-name>DrugAddServlet</servlet-name>
   	<url-pattern>/adddrug</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PatientSearchServlet</servlet-name>
+  	<url-pattern>/PatientSearchServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PatientSearchServlet</servlet-name>
+  	<url-pattern>/patientsearch</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DrugSearchServlet</servlet-name>
+  	<url-pattern>/DrugSearchServlet</url-pattern>
   </servlet-mapping>
 </web-app>
 

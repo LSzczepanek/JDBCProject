@@ -17,6 +17,23 @@
 		<c:redirect url="index.jsp" />
 	</c:if>
 	<%@include file="resources/includes/header.jsp"%>
+	<div class="w3-row-padding">
+		<div class="w3-quarter w3-right">
+			<form name="search" class="w3-container w3-tiny" method="post"
+				action="patientsearch" onsubmit="document.getElementById('wait').style.display='block';">
+				<div class="w3-col m10">
+					<input class="w3-input w3-border-0" type="text" name="search"
+						placeholder="Szukaj"> <input type="hidden" name="wardName"
+						value="${sessionScope.ward}" />
+				</div>
+				<div class="w3-col m2">
+					<span class="w3-opennav w3-xlarge " onclick="search.submit();"><i
+						class="fa fa-search w3-text-grey"></i></span>
+				</div>
+
+			</form>
+		</div>
+	</div>
 	<!-- Page
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
@@ -50,7 +67,8 @@
 								onclick="document.getElementById('${patient[2]}').style.display='block';">Usuń</a>
 						</div>
 						<div class="w3-third">
-							<form action="druglist" method=post onsubmit="document.getElementById('wait').style.display='block';">
+							<form action="druglist" method=post
+								onsubmit="document.getElementById('wait').style.display='block';">
 								<input type="hidden" name="patientId" value="${patient[2]}" />
 								<button class='w3-btn w3-blue'>Leki</button>
 							</form>
@@ -72,7 +90,8 @@
 									pacjentów?</p>
 								<div class="w3-row w3-center">
 									<div class="w3-half">
-										<form method="post" action="patientDelete" onsubmit="document.getElementById('wait').style.display='block';">
+										<form method="post" action="patientDelete"
+											onsubmit="document.getElementById('wait').style.display='block';">
 											<input type="hidden" name="patientId" value="${patient[2]}" />
 											<input type="hidden" name="wardId"
 												value="${sessionScope.ward_id}" /> <input type="hidden"
@@ -104,7 +123,8 @@
 									class="w3-closebtn"><i class="fa fa-times"></i></span>
 								<h2>Edytuj</h2>
 								<form action="editpatient" method="post"
-									id="editpatsubform${patient[2]}" onsubmit="document.getElementById('wait').style.display='block';">
+									id="editpatsubform${patient[2]}"
+									onsubmit="document.getElementById('wait').style.display='block';">
 									<div class="w3-row">
 										<div class="w3-half">
 
@@ -220,7 +240,8 @@
 					onclick="document.getElementById('patientadd').style.display = 'none';  document.getElementById('addpatsubform').reset();"
 					class="w3-closebtn"><i class="fa fa-times"></i></span>
 				<h2>Dodaj</h2>
-				<form action="addpatient" method="post" id="addpatsubform" onsubmit="document.getElementById('wait').style.display='block';">
+				<form action="addpatient" method="post" id="addpatsubform"
+					onsubmit="document.getElementById('wait').style.display='block';">
 					<div class="w3-row">
 						<div class="w3-half">
 
@@ -290,7 +311,8 @@
 
 	<!-- popup z czekaniem -->
 	<div id="wait" class="w3-modal w3-animate-opacity w3-center">
-		<a onclick="document.getElementById('wait').style.display = 'none';"><i class="fa fa-spinner fa-pulse fa-3x fa-fw w3-text-white"></i></a>
+		<a onclick="document.getElementById('wait').style.display = 'none';"><i
+			class="fa fa-spinner fa-pulse fa-3x fa-fw w3-text-white"></i></a>
 	</div>
 
 	<!-- Footer

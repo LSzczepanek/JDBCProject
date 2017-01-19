@@ -17,6 +17,24 @@
 		<c:redirect url="index.jsp" />
 	</c:if>
 	<%@include file="resources/includes/header.jsp"%>
+	<div class="w3-row-padding">
+		<div class="w3-quarter w3-right">
+			<form name="search" class="w3-container w3-tiny" method="post"
+				action="DrugSearchServlet"
+				onsubmit="document.getElementById('wait').style.display='block';">
+				<div class="w3-col m10">
+					<input class="w3-input w3-border-0" type="text" name="search"
+						placeholder="Szukaj"> <input type="hidden"
+						name="patientId" value="${patientId}" />
+				</div>
+				<div class="w3-col m2">
+					<span class="w3-opennav w3-xlarge " onclick="search.submit();"><i
+						class="fa fa-search w3-text-grey"></i></span>
+				</div>
+
+			</form>
+		</div>
+	</div>
 	<!-- Page
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<script type="text/javascript">
@@ -86,7 +104,8 @@
 
 	<!-- popup z czekaniem -->
 	<div id="wait" class="w3-modal w3-animate-opacity w3-center">
-		<a onclick="document.getElementById('wait').style.display = 'none';"><i class="fa fa-spinner fa-pulse fa-3x fa-fw w3-text-white"></i></a>
+		<a onclick="document.getElementById('wait').style.display = 'none';"><i
+			class="fa fa-spinner fa-pulse fa-3x fa-fw w3-text-white"></i></a>
 	</div>
 	<!-- Footer
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
