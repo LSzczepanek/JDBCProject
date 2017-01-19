@@ -22,7 +22,7 @@
 			<div class="w3-container w3-teal">
 				<h2>Zaloguj się</h2>
 			</div>
-			<form action="loginvalid" class="w3-container" method=post>
+			<form action="loginvalid" class="w3-container" method=post onsubmit="document.getElementById('wait').style.display='block';">
 				<input class="w3-input" type="text" name="login" required> <label
 					class="w3-label w3-validate">Login</label> <input class="w3-input"
 					type="password" name="password" required> <label
@@ -34,6 +34,10 @@
 		<div class="w3-third w3-container"></div>
 	</div>
 
+	<!-- popup z czekaniem -->
+	<div id="wait" class="w3-modal w3-animate-opacity w3-center">
+		<a onclick="document.getElementById('wait').style.display = 'none';"><i class="fa fa-spinner fa-pulse fa-3x fa-fw w3-text-white"></i></a>
+	</div>
 
 	<!-- Footer
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->

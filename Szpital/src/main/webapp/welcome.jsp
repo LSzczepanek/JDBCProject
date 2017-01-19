@@ -32,8 +32,9 @@
 						Obecnie na oddziale ${ward} znajduje się ${patientAmount}
 						pacjentów. Aby przejrzeć ich listę wciśnij przycisk <b>Lista</b>
 					</p>
-					<form action="patients" class="w3-container w3-center" method=post>
-						<input type="hidden" name="wardName" value="${ward}"/>
+					<form action="patients" class="w3-container w3-center" method=post
+						onsubmit="document.getElementById('wait').style.display='block';">
+						<input type="hidden" name="wardName" value="${ward}" />
 						<button class="w3-btn w3-blue-grey">Lista</button>
 					</form>
 				</div>
@@ -43,13 +44,19 @@
 			<p>&nbsp</p>
 		</div>
 	</div>
-
+	
+	<!-- popup z czekaniem -->
+	<div id="wait" class="w3-modal w3-animate-opacity w3-center">
+		<a onclick="document.getElementById('wait').style.display = 'none';"><i
+			class="fa fa-spinner fa-pulse fa-3x fa-fw w3-text-white"></i></a>
+	</div>
 
 	<!-- Footer
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<div class="w3-row">
-        <p class="w3-display-bottomright w3-text-grey w3-small">Created by Dawid Kiciński &amp Łukasz Szczepanek</p>
-    </div>
+		<p class="w3-display-bottomright w3-text-grey w3-small">Created by
+			Dawid Kiciński &amp Łukasz Szczepanek</p>
+	</div>
 
 </body>
 </html>

@@ -19,13 +19,15 @@
 	<%@include file="resources/includes/header.jsp"%>
 	<!-- Page
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<script type="text/javascript">
+		document.getElementById('wait').style.display = 'none';
+	</script>
 	<c:set var="error_msg" value="${requestScope.error}" scope="page" />
 	<c:set var="patientId" value="${requestScope.patientId}" scope="page" />
 	<c:set var="patientName" value="${requestScope.patientInfo[0]}"
 		scope="page" />
 	<c:set var="patientSurname" value="${requestScope.patientInfo[1]}"
 		scope="page" />
-	<h2>Pacjent ${patientName} ${patientSurname}</h2>
 	<p class="w3-text-red">${error_msg}</p>
 	<div class="w3-row w3-container w3-section">
 		<div class="w3-col m1 w3-hide-small">
@@ -34,6 +36,8 @@
 		<div class="w3-col m10">
 			<table class="w3-table w3-section w3-striped w3-bordered w3-card-4">
 				<thead>
+					<tr class="w3-teal">Pacjent ${patientName} ${patientSurname}
+					</tr>
 					<tr class="w3-teal">
 						<th>Nazwa</th>
 						<th>Ilość w magazynie</th>
@@ -46,7 +50,8 @@
 
 					<td>
 						<div class="w3-half">
-							<form action="adddrug" method=post>
+							<form action="adddrug" method=post
+								onsubmit="document.getElementById('wait').style.display='block';">
 								<input class="w3-input w3-border-0" name="drugAmount"
 									type="number" min="0" value="${fn:replace(drug[3],' ', '')}"
 									id="drugAmount'${drug[0]}'" required /> <input type="hidden"
@@ -71,19 +76,23 @@
 		</div>
 	</div>
 
-<div class="w3-container">
-	<form action="patients" method=post>
-		<input type="hidden" name="wardName" value="${wardName}" />
-		<button class='w3-btn w3-teal'>Powrót do listy pacjentów</button>
-	</form>
+	<div class="w3-container">
+		<form action="patients" method=post>
+			<input type="hidden" name="wardName" value="${wardName}" />
+			<button class='w3-btn w3-teal'>Powrót do listy pacjentów</button>
+		</form>
 	</div>
 
+
+	<!-- popup z czekaniem -->
+	<div id="wait" class="w3-modal w3-animate-opacity w3-center">
+		<a onclick="document.getElementById('wait').style.display = 'none';"><i class="fa fa-spinner fa-pulse fa-3x fa-fw w3-text-white"></i></a>
+	</div>
 	<!-- Footer
     –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	<div class="w3-row">
 		<p class="w3-display-bottomright w3-text-grey w3-small">Created by
 			Dawid Kiciński &amp Łukasz Szczepanek</p>
 	</div>
-
 </body>
 </html>
