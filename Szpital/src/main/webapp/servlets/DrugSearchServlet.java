@@ -50,9 +50,14 @@ public class DrugSearchServlet extends HttpServlet {
 		request.setAttribute("patientId", patientIdSpace);
 		
 		String search = request.getParameter("search");
-		
+		try{
 		String[][] drugs = ResultHelper.getArrayOfResult2(Drug.searchFromAllAvalaibleDrugs(patientId, search));
 		request.setAttribute("drugs", drugs);
+		}
+		catch(StringIndexOutOfBoundsException e)
+		{
+			
+		}
 		
 		String[] patientInfo = ResultHelper.getArrayOfResult(Patient.printPatient(patientId));
 		request.setAttribute("patientInfo", patientInfo);

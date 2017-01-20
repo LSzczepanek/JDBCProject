@@ -38,8 +38,14 @@ public class PatientSearchServlet extends HttpServlet {
 		String search = request.getParameter("search");
 		String result = PatientsInHospitalWard.checkPatientsInHospitalWard(ward);
 		result.replaceAll("\\s+", "");
+		try{
 		String[][] patientInfo = ResultHelper.getArrayOfResult2(PatientsInHospitalWard.searchForPatientsInHospitalWard(ward, search));
 			request.setAttribute("patientInfo", patientInfo);
+		}
+		catch(StringIndexOutOfBoundsException e)
+		{
+			request.setAttribute("error", "error");
+		}
 
 			
 		ServletContext context = getServletContext();
