@@ -1,7 +1,0 @@
-
-2. dodawanie(DONE)/usuwanie(DONE)/edycja pacjenta
-5. Dodanie obiektow do tabel
-
-
-
-
